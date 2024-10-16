@@ -11,6 +11,8 @@ const audioPlay = new Audio('./sonidos/play.wav');
 const audioPausa = new Audio('./sonidos/pause.mp3');
 const audioTiempoFinalizado = new Audio('./sonidos/beep.mp3');
 const botonIniciarPausar = document.querySelector('#start-pause');
+const textoIniciarPausar = document.querySelector('#start-pause span');
+const iconoIniciarPausar = document.querySelector('.app__card-primary-butto-icon');
 
 let tiempoTranscurridoEnSegundos = 5;
 let idIntervalo = null;
@@ -76,6 +78,8 @@ const cuentaRegresiva = () => {
         reiniciar();
         return;
     }
+    textoIniciarPausar.textContent = 'Pausar';
+    iconoIniciarPausar.setAttribute('src', './imagenes/pause.png');
     tiempoTranscurridoEnSegundos -= 1;
     console.log(tiempoTranscurridoEnSegundos);
 }
@@ -96,4 +100,6 @@ function iniciarPausar() {
 function reiniciar() {
     clearInterval(idIntervalo);
     idIntervalo = null;
+    textoIniciarPausar.textContent = 'Comenzar';
+    iconoIniciarPausar.setAttribute('src', './imagenes/play_arrow.png');
 }
